@@ -16,12 +16,12 @@ begin
   
   def move_vm_to_service(vm, target_service)
     unless vm.service.nil?
-      log(:info, "Removing vm '#{vm.name}' from service_id : #{vm.service.id}")
+      $evm.log(:info, "Removing vm '#{vm.name}' from service_id : #{vm.service.id}")
       vm.remove_from_service()
     else
-      log(:info, "Vm '#{vm.name}' had no service assigned")
+      $evm.log(:info, "Vm '#{vm.name}' had no service assigned")
     end
-    log(:info, "Adding vm '#{vm.name}' to service #{target_service.name} with id : #{target_service.id}")
+    $evm.log(:info, "Adding vm '#{vm.name}' to service #{target_service.name} with id : #{target_service.id}")
     vm.add_to_service(target_service)
   end
   
@@ -48,6 +48,6 @@ begin
 
   exit MIQ_OK
 rescue => err
-  log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
+  $evm.log(:error, "[#{err}]\n#{err.backtrace.join("\n")}")
   exit MIQ_STOP
 end
