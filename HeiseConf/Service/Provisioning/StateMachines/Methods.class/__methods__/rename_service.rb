@@ -6,9 +6,6 @@
 # Notes: This method renames the service based on the dialog options passed
 #----------------------------------------------------------------
 begin
-  object_type = $evm.root['vmdb_object_type']
-  $evm.log(:info, "vmdb_object_type: #{object_type}")
-
   service_template_provision_task = $evm.root['service_template_provision_task']
   service = service_template_provision_task.destination
   
